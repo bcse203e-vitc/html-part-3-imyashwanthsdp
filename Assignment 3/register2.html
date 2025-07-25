@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Online Event Registration</title>
+</head>
+<body>
+ <h1>Event Registration</h1>
+ <form action="/register" method="post">
+
+   <label for="fullname">Full Name:</label><br />
+   <input type="text" id="fullname" name="fullname" required /><br /><br />
+
+   
+   <label for="email">Email:</label><br />
+   <input
+     type="email"
+     id="email"
+     name="email"
+     placeholder="example@domain.com"
+     required
+   /><br /><br />
+
+   
+   <label for="phone">Phone Number:</label><br />
+   <input type="tel" id="phone" name="phone" pattern="[0-9+\-\s()]{7,15}" placeholder="+91 1234567890" /><br /><br />
+
+   
+   <label>Gender:</label><br />
+   <input type="radio" id="gender-male" name="gender" value="male" required />
+   <label for="gender-male">Male</label><br />
+   <input type="radio" id="gender-female" name="gender" value="female" />
+   <label for="gender-female">Female</label><br />
+   <input type="radio" id="gender-other" name="gender" value="other" />
+   <label for="gender-other">Other</label><br /><br />
+
+   
+   <label for="age-group">Age Group:</label><br />
+   <select id="age-group" name="age-group" required>
+     <option value="" disabled selected>Select your age group</option>
+     <option value="under18">Under 18</option>
+     <option value="18-25">18-25</option>
+     <option value="26-35">26-35</option>
+     <option value="36-50">36-50</option>
+     <option value="51plus">50+</option>
+   </select><br /><br />
+
+   
+   <label>Topics of Interest:</label><br />
+   <input type="checkbox" id="topic-tech" name="topics" value="technology" />
+   <label for="topic-tech">Technology</label><br />
+   <input type="checkbox" id="topic-health" name="topics" value="health" />
+   <label for="topic-health">Health</label><br />
+   <input type="checkbox" id="topic-education" name="topics" value="education" />
+   <label for="topic-education">Education</label><br />
+   <input type="checkbox" id="topic-finance" name="topics" value="finance" />
+   <label for="topic-finance">Finance</label><br /><br />
+
+   
+   <label for="comments">Additional Comments:</label><br />
+   <textarea id="comments" name="comments" rows="4" cols="40" placeholder="Your comments here..."></textarea><br /><br />
+
+   
+   <button type="submit">Register</button>
+ </form>
+</body>
+</html>
