@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Travel Booking Form</title>
+ <script>
+  function calculateTotal() {
+    const travelers = parseInt(document.getElementById('num-travelers').value) || 0;
+    const travelClass = document.querySelector('input[name="travel-class"]:checked');
+    const insurance = document.getElementById('insurance').checked;
+    if (!travelClass) {
+      document.getElementById('total-cost').value = '';
+      return;
+    }
+    
+    let pricePerTraveler = 0;
+    switch (travelClass.value) {
+      case 'Economy':
+        pricePerTraveler = 100;
+        break;
+      case 'Business':
+        pricePerTraveler = 300;
+        break;
+      case 'First Class':
+        pricePerTraveler = 500;
+        break;
+    }
+
+    let total = travelers * pricePerTraveler;
+    if (insurance) {
+      total += travelers * 20; 
+    }
+    document.getElementById('total-cost').value = '$' + total.toFixed(2);
+  }
+ </script>
+</head>
+<body>
+ <h1>Travel Booking Form</h1>
+ <form action="/submit-travel-booking" method="post" oninput="calculateTotal()">
+  
+  <label for="full-name">Full Name:</label><br />
+  <input type="text" id="full-name" name="full-name" required /><br /><br />
+
+  
+  <label for="contact-info">Contact Information:</label><br />
+  <input type="email" id="contact-info" name="contact-info" placeholder="example@domain.com" required /><br /><br />
+
+  
+  <label for="destination">Destination:</label><br />
+  <select id="destination" name="destination" required>
+   <option value="" disabled selected>Select a destination</option>
+   <option value="New York">New York</option>
+   <option value="Paris">Paris</option>
+   <option value="Tokyo">Tokyo</option>
+   <option value="Sydney">Sydney</option>
+   <option value="Cairo">Cairo</option>
+  </select><br /><br />
+
+  
+  <label for="departure-date">Departure Date:</label><br />
+  <input type="date" id="departure-date" name="departure-date" required /><br /><br />
+
+  <label for="return-date">Return Date:</label><br />
+  <input type="date" id="return-date" name="return-date" required /><br /><br />
+
+
+  <label for="num-travelers">Number of Travelers:</label><br />
+  <input type="number" id="num-travelers" name="num-travelers" min="1" value="1" required /><br /><br />
+
+  
+  <label>Travel Class:</label><br />
+  <input type="radio" id="economy" name="travel-class" value="Economy" required />
+  <label for="economy">Economy</label><br />
+  <input type="radio" id="business" name="travel-class" value="Business" />
+  <label for="business">Business</label><br />
+  <input type="radio" id="first-class" name="travel-class" value="First Class" />
+  <label for="first-class">First Class</label><br /><br />
+
+  
+  <input type="checkbox" id="insurance" name="insurance" />
+  <label for="insurance">Opt for Travel Insurance (₹20 per traveler)</label><br /><br />
+
+  
+  <label for="total-cost">Total Cost:</label><br />
+  <input type="text" id="total-cost" name="total-cost" readonly placeholder="₹0.00" /><br /><br />
+
+  
+  <button type="submit">Book Travel</button>
+ </form>
+</body>
+</html>
